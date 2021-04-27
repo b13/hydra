@@ -34,7 +34,11 @@ class ResponseHeaderMiddleware implements MiddlewareInterface
         }
 
         foreach ($configuration['responseHeaders'] as $header => $content) {
-            $response = $response->withAddedHeader($header, $content);
+            if (is_array($content)) {
+                $response = $response->withAddedHeader($header, implode(' ', $content));
+            } else {
+                $response = $response->withAddedHeader($header, $content);
+            }
         }
 
         return $response;

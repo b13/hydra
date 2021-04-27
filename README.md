@@ -13,12 +13,35 @@ In the site config simply specify the headers:
 
 ```yaml
 responseHeaders:
-  Content-Security-Policy: "frame-ancestors 'self'"
+  Content-Security-Policy: "default-src 'self';"
   Referrer-Policy: "no-referrer-when-downgrade"
   X-Content-Type-Options: "nosniff"
   X-Xss-Protection: "1; mode=block"
   Feature-Policy: "camera 'none'; geolocation 'none'; microphone 'none'; payment 'none'"
   Permissions-Policy: "camera=(), geolocation=(), microphone=(), payment=()"
+  X-Frame-Options: "SAMEORIGIN"
+```
+
+To improve maintainability of header configuration with many parts like CSP or Feature-policy
+each header can be configured as a list. The list items will be concatenated to one string when the header is added.
+The above example could be rewritten like this:
+
+```yaml
+responseHeaders:
+  Content-Security-Policy: "default-src 'self';"
+  Referrer-Policy: "no-referrer-when-downgrade"
+  X-Content-Type-Options: "nosniff"
+  X-Xss-Protection: "1; mode=block"
+  Feature-Policy:
+    - "camera 'none';"
+    - "geolocation 'none';"
+    - "microphone 'none';"
+    - "payment 'none'"
+  Permissions-Policy:
+    - "camera=(),"
+    - "geolocation=(),"
+    - "microphone=(),"
+    - "payment=()"
   X-Frame-Options: "SAMEORIGIN"
 ```
 
