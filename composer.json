@@ -1,20 +1,43 @@
 {
 	"name": "b13/hydra",
-	"description": "Allows adding response headers through site config.",
+	"description": "Hydra - Allows adding response headers through site config.",
 	"type": "typo3-cms-extension",
 	"homepage": "https://b13.com",
 	"license": "GPL-2.0-or-later",
 	"require": {
-		"typo3/cms-core": "^10.4 || ^11.0 || ^12.0 || ^13.0"
+		"typo3/cms-core": "^13.4 || ^14.3",
+		"typo3/cms-frontend": "^13.4 || ^14.3"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "^11.0",
+		"friendsofphp/php-cs-fixer": "^3.94",
+		"phpstan/phpstan": "^2.1",
+		"typo3/testing-framework": "^9.1",
+		"typo3/coding-standards": "^0.8.0"
 	},
 	"autoload": {
 		"psr-4": {
 			"B13\\Hydra\\": "Classes/"
 		}
 	},
+	"autoload-dev": {
+		"psr-4": {
+			"B13\\Hydra\\Tests\\": "Tests"
+		}
+	},
 	"extra": {
 		"typo3/cms": {
-			"extension-key": "hydra"
+			"extension-key": "hydra",
+			"version": "1.3.0",
+			"Package": {
+				"providesPackages": {}
+			}
+		}
+	},
+	"config": {
+		"allow-plugins": {
+			"typo3/class-alias-loader": true,
+			"typo3/cms-composer-installers": true
 		}
 	}
 }

@@ -1,4 +1,5 @@
 <?php
+
 return [
     'frontend' => [
         'hydra/respond-headers' => [
@@ -9,6 +10,6 @@ return [
             'after' => [
                 'typo3/cms-frontend/site',
             ],
-        ]
-    ]
+        ],
+    ],
 ];
